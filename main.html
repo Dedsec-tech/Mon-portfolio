@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dedsec - portfolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container{
+            max-width: 1200px; /* Largeur maximale du conteneur*/
+            margin: 0 auto; /* Centrer le conteneur horizontalement */
+            padding: 0 20px; /* Espacement horizontal pour les petits écrans */
+        }
+
+        .navbar{
+            background-color: #1a2332;
+            padding: 1rem 0; /* Espacement vertical de la barre de navigation */
+            position: sticky; /* Rendre la barre de navigation collante */
+            top: 0;
+            z-index: 100; /* Positionner la barre de navigation en haut de la page */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ajouter une ombre pour un effet de profondeur */
+        }
+
+        .nav-container{
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 1px; /* Espacement entre les lettres du logo */
+        }
+
+        .nav-menu{
+            display: flex;
+            list-style: none;
+            gap: 2rem; /* Espacement entre les éléments du menu de navigation */
+            align-items: center;
+        }
+
+        .nav-link{
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+        }
+
+        .nav-link:hover {
+            color: #6366f1;
+        }
+
+        .hero{
+            background: linear-gradient(135deg,  #1a2332 0%, #2c3e50 100%);
+            color: #fff;
+            padding: 6rem 0;
+            position: relative; /* Positionner la section hero pour permettre le positionnement absolu de l'image */
+            overflow: hidden; /* Masquer les débordements pour éviter que l'image ne dépasse de la section */
+        }
+
+        .hero::before{ 
+            content:'';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"%3E%3Cdefs%3E%3ClinearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%"%3E%3Cstop offset="0%" style="stop-color:rgba(255,255,255,0.1);stop-opacity:1" /%3E%3Cstop offset="100%" style="stop-color:rgba(255,255,255,0);stop-opacity:1" /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill="url(%23bgGrad)" width="1200" height="600"/%3E%3C/svg%3E') no-repeat center/cover;
+            opacity: 0.1;
+        }
+
+        .hero-container{
+            max-width: 1200px;
+            margin : 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Disposition en deux colonnes pour le contenu et l'image de la section hero */
+            align-items: center;
+            position: relative;
+            z-index: 2; /* Positionner le contenu au-dessus de l'image de fond */
+        }
+
+        .hero-content {
+            animation: slideInLeft 0.8s ease;
+        }
+
+        .hero-content h1{
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .glitch {
+            position: relative;
+            color: #fff;
+            animation: glitch 0.3s infinite;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch::before {
+            animation: glitchTop 0.3s infinite;
+            color: #8b5cf6;
+            z-index: -1;
+            text-shadow: -2px 0 #ff00c0;
+        }
+
+        .glitch::after {
+            animation: glitchBottom 0.3s infinite;
+            color: #6366f1;
+            z-index: -2;
+            text-shadow: 2px 0 #00ffff;
+        }
+
+        @keyframes glitchBottom {
+    0% {
+        clip-path: polygon(0 80%, 100% 80%, 100% 100%, 0 100%);
+        transform: translate(0);
+    }
+    20% {
+        clip-path: polygon(0 80%, 100% 80%, 100% 100%, 0 100%);
+        transform: translate(2px, -2px);
+    }
+    40% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        transform: translate(2px, 2px);
+    }
+    60% {
+        clip-path: polygon(0 0, 98% 0, 98% 100%, 0 100%);
+        transform: translate(-2px, -2px);
+    }
+    80% {
+        clip-path: polygon(0 85%, 100% 85%, 100% 100%, 0 100%);
+        transform: translate(1px, 2px);
+    }
+    100% {
+        clip-path: polygon(0 85%, 100% 85%, 100% 100%, 0 100%);
+        transform: translate(0);
+    }
+}
+
+        .hero-subtitle {
+            font-size: 2rem;
+            color: #8b5cf6;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .hero-divider {
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #8b5cf6, #6366f1);
+            margin-bottom: 1.5rem;
+            border-radius: 2px;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #e0e7ff;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 0.75rem 2rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 2px solid #8b5cf6;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: #8b5cf6;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3);
+        }
+
+        .hero-image {
+            animation: slideInRight 0.8s ease;
+        }
+
+        .hero-image img {
+            height: 400px;
+            width: 400px;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ===== About Section ===== */
+        .about {
+            padding: 6rem 0;
+            background-color: #f5f5f5;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image img {
+            height: 400px;
+            width: 400px;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #1a2332;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-icon {
+             display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            color: #fff;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        
+        .social-icon:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 92, 246, 0.3);
+        }
+
+        .skills-icons {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .skill-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .skill-icon i {
+            font-size: 3rem;
+            color: #8b5cf6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        
+        .skill-icon:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(139, 92, 246, 0.3);
+            border-color: #8b5cf6;
+        }
+
+        .portfolio {
+            padding: 6rem 0;
+        }
+
+        .portfolio h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #1a2332;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            background: #e0e7ff;
+        }
+
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-card h3 {
+            padding: 1.5rem 1.5rem 0.5rem;
+            font-size: 1.3rem;
+            color: #1a2332;
+        }
+
+        .portfolio-card p {
+            padding: 0 1.5rem;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .portfolio-card .btn {
+            margin: 1rem 1.5rem 1.5rem;
+            display: block;
+            width: calc(100% - 3rem);
+            text-align: center;
+        }
+
+        /* ===== Projects Section ===== */
+        .projects {
+            padding: 6rem 0;
+            background: #f9fafb;
+        }
+
+        .projects h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #1a2332;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(139, 92, 246, 0.25);
+        }
+
+        .project-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 1rem 1rem 0 1rem;
+            border-radius: 4px;
+            width: fit-content;
+        }
+
+        .project-image {
+            width: 250px;
+            height: 250px;
+            overflow: hidden;
+            background: #e0e7ff;
+        }
+
+        .project-image img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-content h3 {
+            font-size: 1.4rem;
+            color: #1a2332;
+            margin-bottom: 0.8rem;
+        }
+
+        .project-content p {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .project-tech {
+            display: flex;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tech-tag {
+            display: inline-block;
+            background: #e0e7ff;
+            color: #6366f1;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            background: #6366f1;
+            color: #fff;
+        }
+
+        .project-card .btn {
+            align-self: flex-start;
+        }
+
+        .skills {
+            background: #1a2332;
+            color: #fff;
+            padding: 6rem 0;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .skills h2 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .skill {
+            margin-bottom: 2rem;
+        }
+
+        .skill label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 10px;
+            background: #2a3a4f;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #8b5cf6, #6366f1);
+            border-radius: 5px;
+            transition: width 0.3s ease;
+        }
+
+        .skill span {
+            float: right;
+            font-size: 0.9rem;
+            color: #a0aec0;
+        }
+
+        .aizen-quote {
+            margin-top: 2.5rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(99, 102, 241, 0.15));
+            border-left: 4px solid #8b5cf6;
+            border-radius: 4px;
+            font-style: italic;
+            color: #e0e7ff;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            text-align: center;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== Contact Form ===== */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 0.75rem 1rem;
+            border: 1px solid #3a4a5f;
+            border-radius: 4px;
+            background: #f5f5f5;
+            color: #333;
+            font-size: 0.95rem;
+            font-family: inherit;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #8b5cf6;
+            background: #fff;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+        }
+
+        .contact-info {
+            font-size: 1rem;
+            line-height: 2;
+        }
+
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .icon {
+            font-size: 1.2rem;
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            background: #0f1419;
+            color: #999;
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.95rem;
+        }
+
+        .heart {
+            color: #ef4444;
+        }
+
+        /* ===== Responsive Design ===== */
+        @media (max-width: 768px) {
+            .nav-menu {
+                gap: 1rem;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-icons {
+                gap: 1rem;
+            }
+
+            .skill-icon {
+                width: 70px;
+                height: 70px;
+            }
+
+            .social-links {
+                flex-direction: column;
+            }
+
+            .social-icon {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .nav-menu {
+                gap: 0.5rem;
+            }
+
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                gap: 0.5rem;
+            }
+
+            .btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            .about-text h2,
+            .portfolio h2,
+            .skills h2 {
+                font-size: 1.8rem;
+            }
+
+            .portfolio-card .btn {
+                margin: 1rem 1rem 1rem;
+                width: calc(100% - 2rem);
+            }
+        }
+
+        .logo img {
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Dedsec</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Accueil</a></li>
+                <li><a href="#about" class="nav-link">À Propos</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#projects" class="nav-link">Projets</a></li>
+                <li><a href="#skills" class="nav-link">Compétences</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1><span class="glitch" data-text="Dedsec">Dedsec</span></h1>
+                <p class="hero-subtitle">Développeur Fullstack & Étudiant en Informatique</p>
+                <div class="hero-divider"></div>
+                <p class="hero-description">Créer des applications web sécurisées et scalables avec les technologies modernes. Passionné par la programmation, Futur Software Engineer.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary">Voir Mon Travail</button>
+                    <a href="https://github.com/Dedsec-tech" target="_blank" class="btn btn-secondary">Profil GitHub</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="dedsec.jpg" alt="Dedsec">
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="dedsec.jpg" alt="Dedsec">
+                </div>
+                <div class="about-text">
+                    <h2>À Propos de Moi</h2>
+                    <p>Je fais mes études en informatique et je suis passionné par la programmation,j'essaie de devenir un développeur fullstack compétent et je me vois comme un futur Software Engineer.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/Dedsec-tech" target="_blank" class="social-icon" title="GitHub">📌 GitHub</a>
+                        <a href="mailto:dedsecbonkeke@outlook.fr" class="social-icon" title="Email">✉️ Email</a>
+                    </div>
+                    <div class="skills-icons">
+                        <div class="skill-icon" title="Python">
+                             <i class="devicon-python-plain colored"></i>
+                        </div>
+                        <div class="skill-icon" title="PHP">
+                           <i class="devicon-php-plain colored"></i> 
+                        </div>
+                        <div class="skill-icon" title="SQL">
+                            <i class="devicon-sqlite-plain colored"></i>
+                        </div>
+
+                        <div class="skill-icon" title="HTML">
+                            <i class="devicon-html5-plain colored"></i>
+                        </div>
+                        <div class="skill-icon" title="CSS">
+                            <i class="devicon-css3-plain colored"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <h2>Mon Portfolio</h2>
+            <p class="section-subtitle">Quelques-uns de mes projets récents</p>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <img src="Hospi.png" alt="">
+                    </div>
+                    <h3>Mini système de Gestion Hospitalière</h3>
+                    <p>Application de gestion hospitalière en Python avec base de données SQLite.</p>
+                   <a href="https://github.com/Dedsec-tech/Mini-syst-me-de-gestion-hospitali-re-" target="_blank" class="btn btn-primary">Voir le Projet</a>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <img src="logo.png" alt="">
+                    </div>
+                    <h3>Gestion des Inscriptions Universitaires</h3>
+                    <p>Application de gestion des inscriptions universitaires en PHP avec base de données SQLite.</p>
+                    <a href="https://github.com/Dedsec-tech/Gestion-des-inscriptions-universitaires-avec-PHP-SQLITE" target="_blank" class="btn btn-primary">Voir le Projet</a>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                       <img src="takeaway.png" alt="">
+                    </div>
+                    <h3>Takeaway Statique</h3>
+                    <p>Un site de commande de nourriture statique avec HTML/CSS, conçu pour démontrer les compétences en développement web frontend.</p>
+                    <a href="https://github.com/Dedsec-tech/Mod-le-de-Site-Takeaway-Statique-" target="_blank" class="btn btn-primary">Voir le Projet</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <section class="projects" id="projects">
+        <div class="container">
+            <h2>Projets Phare</h2>
+            <p class="section-subtitle">Applications du monde réel construite avec les technologies modernes</p>
+                <div class="project-card">
+                    <div class="project-badge">Python & SQL</div>
+                    <div class="project-image">
+                       <img src="Hospi.png" alt="">
+                    </div>
+                    <div class="project-content">
+                        <h3>Système de Gestion Hospitalier</h3>
+                        <p>Une application Python complète pour gérer les opérations hospitalires y compris les dossiers patients, les rendez-vous et l'inventaire médical. Construit avec optimisation de base de données et gestion sécurisée des données.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">SQLite</span>
+                        </div>
+                            <a href="https://github.com/Dedsec-tech/Mini-syst-me-de-gestion-hospitali-re-" target="_blank" class="btn btn-primary">Voir le Projet</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <section class="skills" id="skills">
+        <div class="container">
+            <div class="skills-container">
+                <div class="skills-column">
+                    <h2>Mes Compétences</h2>
+                    <div class="skill">
+                        <label>Python</label>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                        <span>60%</span>
+                    </div>
+                    <div class="skill">
+                        <label>PHP & MySQL</label>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 70%"></div>
+                        </div>
+                        <span>60%</span>
+                    </div>
+                    <div class="skill">
+                        <label>Programmation C</label>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 45%"></div>
+                        </div>
+                        <span>25%</span>
+                    </div>
+                    <div class="skill">
+                        <label>Notions de Cybersécurité</label>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 50%"></div>
+                        </div>
+                        <span>20%</span>
+                    </div>
+                    <div class="aizen-quote">
+                        "La trahison que tu vois est triviale,<br>ce qui est véritablement terrifiant, c'est la trahison que tu ne vois pas."
+                    </div>
+                </div>
+
+                <div class="contact-column">
+                    <h2>Me Contacter</h2>
+                    <form class="contact-form" action="https://formspree.io/f/mwvyearj" method="POST">
+                        <input type="text" placeholder="Nom" required>
+                        <input type="email" placeholder="Email" required>
+                        <textarea placeholder="Message" rows="5" required></textarea>
+                        <button type="submit" class="btn btn-primary">Envoyer le Message</button>
+                    </form>
+                    <div class="contact-info">
+                        <p><span class="icon">✉</span> Email: dedsecbonkeke@outlook.fr</p>
+                        <p><span class="icon">📍</span> Localisation: ma ville, mon pays</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026, Dedsec. Tous les droits réservés. | Conçu avec <span class="heart">❤</span></p>
+        <div class="logo">
+            <img src="dedsec.jpg" alt="">
+        </div>
+    </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>
